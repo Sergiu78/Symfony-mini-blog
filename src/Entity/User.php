@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    const REGISTER_SUCCESS = 'Registration complited successfully!';
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -59,6 +60,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Profession", mappedBy="user")
      */
     private $profession;
+
+    public function __construct()
+    {
+        $this->prohibited = false;
+        $this->roles = ['ROLE_USER'];
+    }
 
     public function getId(): ?int
     {

@@ -23,12 +23,10 @@ class RegisterController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->container->get('doctrine')->getManager();
-            $user->setProhibited(false);
-            $user->setRoles(['ROLE_USER']);
             $user->setPassword($passwordHasher->hashPassword($user, $form['password']->getData()));
             $em->persist($user);
             $em->flush();
-            $em = $this->addFlash('exit', 'Registration has been successfuly!');
+            $this->addFlash('success', User::REGISTER_SUCCESS);
             return $this->redirectToRoute('app_register');
         }
         return $this->render('register/index.html.twig', [
