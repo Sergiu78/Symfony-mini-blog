@@ -28,7 +28,7 @@ class Post
     private $likes;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $foto;
 
@@ -51,6 +51,12 @@ class Post
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="post")
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->likes = '';
+        $this->publication_date = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -113,6 +119,30 @@ class Post
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getComments(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComments(string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(?string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
