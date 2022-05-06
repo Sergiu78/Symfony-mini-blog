@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DashboardController extends AbstractController
 {
     /**
-     * @Route("/dashboard", name="app_dashboard")
+     * @Route("/", name="app_dashboard")
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {

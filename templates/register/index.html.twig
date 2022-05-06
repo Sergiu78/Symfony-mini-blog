@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}{{parent()}}} Register!{% endblock %}
 
 {% block body %}
+    {{parent()}}
     {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
