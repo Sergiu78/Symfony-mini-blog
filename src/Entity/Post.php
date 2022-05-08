@@ -135,12 +135,12 @@ class Post
         return $this;
     }
 
-    public function getUser(): ?string
+    public function getUser()
     {
         return $this->user;
     }
 
-    public function setUser(?string $user): self
+    public function setUser($user): self
     {
         $this->user = $user;
 
